@@ -11,14 +11,6 @@ use Password;
 class StoreRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -35,6 +27,6 @@ class StoreRequest extends FormRequest
     }
 
     public function failedValidation(\Illuminate\Contracts\Validation\Validator $validator) {
-        return new ValidationException($validator, ApiResponse::sendErrorResponse("Validation error", $validator->errors(), 400));
+        throw new ValidationException($validator, ApiResponse::sendErrorResponse("Validation error", $validator->errors(), 400));
     }
 }
