@@ -48,7 +48,7 @@ class UserRepository implements UserInterface
             $users = User::where("id_user", "LIKE", "%$query%")
                 ->orWhere("name", "LIKE", "%$query%")->get();
 
-            if (empty($user)) {
+            if ($users->isEmpty()) {
                 return ApiResponse::sendErrorResponse("Cannot find users with provided query", code: 404);
             }
 

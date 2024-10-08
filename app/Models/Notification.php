@@ -18,4 +18,14 @@ class Notification extends Model
         'message',
         'is_read',
     ];
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class, 'booking_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

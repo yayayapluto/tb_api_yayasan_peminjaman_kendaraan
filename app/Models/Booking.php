@@ -26,4 +26,19 @@ class Booking extends Model
         'to_lat',
         'status',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class, 'id_vehicle');
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'booking_id');
+    }
 }

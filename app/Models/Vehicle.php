@@ -18,4 +18,9 @@ class Vehicle extends Model
         'nopol',
         'is_available',
     ];
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'id_vehicle');
+    }
 }
